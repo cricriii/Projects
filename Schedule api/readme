@@ -1,0 +1,12 @@
+Le modèle à mettre contiendra les classes, dont les champs contiennent au minimum les informations suivantes.
+Cours : numéro, matière (par exemple IFT pour les cours d’informatique), horaire d’un cours (les dates des cours théoriques, pratiques, les dates et l’horaire des examens, etc.), nombre de crédits.
+Votre programme devra proposer un menu comme celui-ci :
+1. Gestion des cours.
+a) Ajouter, modifier ou supprimer un ensemble des cours candidats (maximum 10 cours) pour un horaire d’étudiant.
+b) Créer un horaire personnalisé en prenant en considération les conflits des cours (l’horaire superposé, les dates d’examens superposées ou trop proches, etc.). Les deux conditions pour faire le choix des cours sont :
+• Le nombre de crédits spécifié pour la session
+• Minimum de conflits d’horaire entre les différents cours choisis
+2. Afficher l’horaire créé ou les messages des conflits, si on n’arrive pas satisfaire des contraintes.
+3. Utiliser dans votre design les classes de l’API, par exemple, la classe Calendar pour modéliser les dates.
+4. Pour valider les entrées et gérer les erreurs, utilisez les exceptions.
+5. Utilisez les structures de données (bibliothèques Java) appropriées favorisantes les traitements demandés pour stocker les données.
