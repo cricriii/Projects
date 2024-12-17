@@ -1,5 +1,5 @@
 # Nom du fichier: cafe-api.py
-# Auteurs: Heng WEI (20233531) et Christina DUONG
+# Auteurs: Heng WEI et Christina DUONG
 # La date de création: 25 Avril 2023
 # Ce programme est un API pour un cafe étudiant, permettant aux utilisateurs de faire différentes requêtes: accèder/modifier les fichiers
 # commandes.csv, menu.json et comptes.csv
