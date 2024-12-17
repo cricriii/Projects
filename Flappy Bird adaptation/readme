@@ -1,0 +1,52 @@
+Le joueur incarne un fantôme qui se promène dans un niveau rempli d’obstacles. Il n’y a pas d’objectif
+autre que d’avancer le plus longtemps possible dans le niveau sans toucher d’obstacle.
+
+Le déplacement horizontal du joueur se fait automatiquement vers la droite. Le seul déplacement
+possible est de faire “sauter” le fantôme en appuyant sur la barre espace.
+Pour rendre le jeu de plus en plus difficile à mesure que le score monte, pour chaque deux obstacles
+dépassés, la vitesse du fantôme accélère et la gravité augmente.
+
+Obstacles
+Les obstacles sont représentés par une des 27 images de l’archive obstacles.zip, qui sont des icônes
+de fruits et de légumes.
+Un nouvel obstacle est ajouté dans le niveau à toutes les 3 secondes. Lorsqu’un obstacle est ajouté, il
+doit avoir une position en x tout juste à l’extérieur de la fenêtre du jeu.
+Chaque fois que le joueur dépasse horizontalement un obstacle (autrement dit, lorsque son extrémité
+gauche dépasse l’extrémité droite de l’obstacle), son score augmente de 5 points.
+Si le fantôme entre en collision avec un des obstacles, la partie recommence à zéro (score=0 et le
+fantôme recommence depuis le début du jeu).
+Pour simplifier le modèle, les obstacles et le fantôme sont affichés avec des images mais sont en réalité modélisés
+par des cercles de certains rayons :
+• Le fantôme a un rayon fixe de 30 pixels
+• Les obstacles ont des rayons générés aléatoirement entre 10 et 45 pixels
+Il y a trois types d’obstacles. Les différents types se distinguent par leur mouvement. Chaque obstacle
+ajouté est aléatoirement de l’un de ces trois types.
+Obstacle simple
+Les obstacles simples ont une position (x, y) définie lors de leur création et ne se déplacent pas.
+Obstacle sinus
+Les obstacles sinus ne se déplacent pas horizontalement mais suivent verticalement un mouvement
+sinusoïdal d’une amplitude de 50 pixels centré sur leur position y initiale.
+
+Choisissez vous-mêmes une vitesse appropriée pour le mouvement vertical. Utilisez la fonction
+Math.sin() .
+Obstacle quantique
+Les obstacles quantiques se téléportent d’une distance aléatoire comprise entre -30 et 30 pixels en x
+et en y, périodiquement à chaque 0.2 seconde.Notez qu’il est possible qu’un obstacle quantique se
+téléporte un peu vers l’arrière après que le fantôme l’ait dépassé, mais on ne peut pas “dépasser” une
+deuxième fois le même obstacle pour faire monter le score.
+Physique du fantôme
+Le fantôme se déplace vers la droite à une vitesse constante initiale de 120 pixels par seconde. À chaque
+deux obstacles dépassés, la vitesse horizontale du joueur augmente de 15 pixels par seconde.
+La vitesse verticale du joueur est affectée par les sauts (avec la barre espace) et la gravité :
+• La gravité (une accélération en y seulement) est initialement de 500 2vers le bas
+• À chaque deux obstacles rencontrés, la gravité doit augmenter de 15 vers le bas
+• Un saut change instantanément la vitesse en y du fantôme à 300 vers le haut
+La vitesse en y ne doit jamais dépasser 300 vers le haut ou vers le bas. Si jamais la vitesse
+dépasse les 300, on la force à rester à une magnitude de 300 (en considérant sa direction haut/bas).
+Le fantôme ne peut pas sortir des bords de l’écran : lorsque le fantôme touche le haut ou le bas du niveau,
+il rebondit dans l’autre direction. Notez que contrairement au fantôme, les obstacles pourraient se retrouver
+Arrière-plan
+La fenêtre de jeu est tout le temps centrée horizontalement sur le fantôme, l’arrière-plan et les obstacles
+L’image bg.png doit être affichée de façon cyclique et doit défiler selon la position à laquelle le
+fantôme est rendu dans le niveau.
+
