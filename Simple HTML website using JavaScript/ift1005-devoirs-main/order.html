@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<!-- Nicholas Cooper - 20241729-->
+<!-- Christina Duong - 20238163-->
+<!-- Léane Lavigne - 20190113-->
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <title>OnlineShop - Commande</title>
+</head>
+
+<body>
+  <header>
+    <a href="/index.html">
+      <img src="assets/img/logo.svg" width="300" height="75" alt="OnlineShop logo">
+    </a>
+    <nav>
+      <ul>
+        <li>
+          <a href="/index.html">Accueil</a>
+        </li>
+        <li>
+          <a href="/products.html">Produits</a>
+        </li>
+        <li>
+          <a href="/contact.html">Contact</a>
+        </li>
+        <li>
+          <a href="/shopping-cart.html">Panier</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Commande</h2>
+    <form action="\confirmation.html" method="POST">
+      <fieldset>
+        <legend>Contact</legend>
+        <label>Prénom</label><input id="firstname" type="text" required />
+        <br />
+        <label>Nom</label><input id="lastname" type="text" required />
+        <br />
+        <label>Adresse courriel</label><input id="email" type="email" required />
+        <br />
+        <label>Numéro de téléphone</label><input id="phone" type="tel" pattern="^(?:\+\d{1,3})?\s?\(?\d{3}\)?[\-\s]?\d{3}[\-\s]?\d{4}\s*$" required />
+      </fieldset>
+      <fieldset>
+        <legend>Paiement</legend>
+        <label>Numéro de carte de crédit</label><input id="creditcard" type="text" inputmode="numeric" pattern="^\s*\d{4}\s*\d{4}\s*\d{4}\s*\d{4}\s*$" required />
+        <br />
+        <label>Date d'expiration</label><input id="creditcardexpiry" type="month" min="2023-10" placeholder="YYYY-MM" pattern="^20(?:23-1[1-2]|(?:2[4-9]|[3-9][0-9])-(?:0[1-9]|1[0-2]))$" required />
+      </fieldset>
+      <input type="submit" value="Payer">
+    </form>
+  </main>
+
+  <footer>
+    <p>
+      2023
+      <br />
+      Nicholas Cooper 20241729, Christina Duong 20238163 et Léane Lavigne 20190113
+    </p>
+  </footer>
+</body>
+
+</html>
