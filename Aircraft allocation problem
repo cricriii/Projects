@@ -1,0 +1,94 @@
+# Code to solve the aircraft allocation problem from "Introduction to Stochastic Programming", John R. Birge and François Louveaux.
+
+import pulp
+
+m1 = 3  # Number of aircrafts
+m2 = 3  # Number of routes
+
+# Number of available aircrafts
+b = [2, 2, 2]
+
+# Passenger capacity of each aircraft s on route r
+t = [[200, 100, 300],  # Route 1
+     [300, 100, 200],  # Route 2
+     [400, 100, 150]]  # Route 3
+
+# Deviation cost matrix
+d = [[-25, -12.5, 0],
+     [-25, -12.5, 0],
+     [-25, -12.5, 0]]
+
+# Uncertain passenger demand on route r
+h = [[500, 700],  # Route 1
+     [200, 400],  # Route 2
+     [200, 400]]  # Route 3
+
+# Mean passenger demand per route
+h_bar = [600, 300, 300]
+
+# Positive deviation costs
+q_plus = [25, 25, 25]
+
+# Cost of operations matrix of each aircraft on every route
+c = [[300, 200, 100],  # Route 1
+     [400, 100, 300],  # Route 2
+     [200, 100, 300]]  # Route 3
+
+# Number of deviation levels (K)
+K = [2, 2, 2]
+
+# Create the LP problem
+model = pulp.LpProblem("Aircraft_Allocation_Problem", pulp.LpMinimize)
+
+# Decision variables
+x = [[pulp.LpVariable(f"x_{i}_{j}", lowBound=0, cat="Integer") for j in range(m2)] for i in range(m1)]  # Aircraft allocation
+chi = [[pulp.LpVariable(f"chi_{i}_{j}", lowBound=0, cat="Integer") for j in range(K[i])] for i in range(m1)]  # Deviation variables
+
+# Objective function
+model += pulp.lpSum(c[i][j] * x[i][j] for i in range(m1) for j in range(m2)) + \
+         d[0][0]*chi[0][0] + d[0][1]*chi[0][1] + d[1][0]*chi[1][0] + d[1][1]*chi[1][1] + d[2][0]*chi[2][0] + d[2][1]*chi[2][1] + (q_plus[i] * h_bar[i] for i in range(m1))
+
+# Constraints: Sum of aircraft allocations equals available aircraft
+for i in range(m1):
+    model += pulp.lpSum(x[i][j] for j in range(m2)) == b[i], f"Constraint_Ax_b_{i}"
+
+# Constraints: Tx - chi = bigchi
+bigchi = [pulp.lpSum(chi[i][j] for j in range(K[i])) for i in range(m1)]
+for j in range(m2):
+    model += pulp.lpSum(t[i][j] * x[i][j] for i in range(m1)) == bigchi[j], f"Constraint_Tx_chi_{j}"
+
+# Constraints on chi
+model += chi[0][0] <= 500
+model += chi[1][0] <= 200
+model += chi[2][0] <= 200
+model += chi[0][1] <= 200
+model += chi[1][1] <= 200
+model += chi[2][1] <= 200
+
+# Display the model 
+print("\n -------------------------------------------------- \n")
+print("Objective Function:")
+print(model.objective)
+print("\nConstraints:")
+for name, constraint in model.constraints.items():
+    print(f"{name}: {constraint}")
+print("\n -------------------------------------------------- \n")
+
+# Solve the problem
+model.solve()
+
+# Print the results
+print(f"Status: {pulp.LpStatus[model.status]}")
+print(f"Optimal Objective Value: {pulp.value(model.objective)}")
+
+# Print the optimal values for x
+print("Optimal Values for x:")
+for i in range(m1):
+    for j in range(m2):
+        print(f"x_{i+1}_{j+1} = {pulp.value(x[i][j])}")
+
+# Print the optimal values for chi
+print("Optimal Values for chi:")
+for i in range(m1):
+    for j in range(K[i]):
+        print(f"chi_{i+1}_{j} = {pulp.value(chi[i][j])}")
