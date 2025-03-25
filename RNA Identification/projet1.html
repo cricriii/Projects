@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projet 1</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1> ARN </h1>
+
+        <div class="section">
+            <h4>Sélectionner les 3 nucléotides de l'ARN: </h4>
+            <div class="form-group">
+                <select id="nucleotide1" class="form-control">
+                    <option value="A">A</option>
+                    <option value="U">U</option>
+                    <option value="C">C</option>
+                    <option value="G">G</option>
+                </select>
+                <select id="nucleotide2" class="form-control mt-2">
+                    <option value="A">A</option>
+                    <option value="U">U</option>
+                    <option value="C">C</option>
+                    <option value="G">G</option>
+                </select>
+                <select id="nucleotide3" class="form-control mt-2">
+                    <option value="A">A</option>
+                    <option value="U">U</option>
+                    <option value="C">C</option>
+                    <option value="G">G</option>
+                </select>
+            </div>
+            <div id="amino-acid-display" class="mt-4"></div>
+        </div>
+        <!-- Permet d'entrer une chaîne d'ARN et de configurer la vitesse de l'animation -->
+        <div class="section">
+            <h4>Entrer une chaîne d'ARN: </h4>
+    
+            <!-- Champ de texte où il faut entrer la chaîne d'ARN -->
+            <div class="form-group">
+                <textarea class="form-control" rows="3" id="rna-sequence"></textarea>
+            </div>
+    
+            <!-- Champ où on choisit la vitesse de l'animation en millisecondes -->
+            <div class="form-group">
+                <label for="animation-speed">Vitesse de l'animation (ms): </label>
+                <input type="number" class="form-control" value="500" id="animation-speed">
+            </div>
+    
+            <button id="start-animation" class="btn btn-primary">Démarrer l'animation</button> <!--Démarrer l'animation-->
+    
+            <div class="mt-4" id="rna-animation-display"></div> <!--La zone d'affichage-->
+        </div>
+
+        <!-- Et le tableau d'affichage des acides aminés correspondants -->
+        <div class="mt-4" id="amino-acid-table"></div>
+        
+    </div>
+
+    
+
+    
+
+    <script src="script.js"></script>
+</body>
+</html>

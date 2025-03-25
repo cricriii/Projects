@@ -1,0 +1,63 @@
+h1 {
+    background-color: #10456b;
+    color: #ffffff;
+    text-align: center;
+    padding: 8px;
+    border-radius: 8px;
+}
+
+
+.container {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.section {
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    background-color: #d0e3f3
+}
+
+
+#amino-acid-display {
+    text-align: center;
+    font-weight: bold;
+    color: #b3c3f9;
+}
+
+
+#rna-animation-display {
+    font-family: monospace;
+    white-space: pre;
+}
+
+#amino-acid-table {
+    margin-top: 20px;
+}
+
+#amino-acid-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#amino-acid-table th, #amino-acid-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#amino-acid-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+#amino-acid-table tr:hover {
+    background-color: #ddd;
+}
+
+#amino-acid-table th {
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+}
