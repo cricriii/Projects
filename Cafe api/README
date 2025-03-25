@@ -1,0 +1,16 @@
+# Cafe API
+
+## 📖 Project Overview
+The **Cafe API** is a RESTful web service designed to manage cafe-related data, such as menu items, orders, or customer details. It demonstrates backend development skills, including API creation, CRUD operations, and data handling.
+
+## 🛠️ Tech Stack
+- **Backend:** Python
+- **Database:** commandes.csv, comptes.csv
+
+## ✨ Key Features
+- Create, Read, Update, and Delete (CRUD) operations.
+- Authentication and authorization (if implemented).
+- Error handling and input validation.
+- Scalable and modular code structure.
+
+
